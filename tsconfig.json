@@ -1,0 +1,36 @@
+{
+  "ts-node": {
+    "swc": true,
+    "require": ["tsconfig-paths/register"],
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "ignoreDeprecations": "5.0",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "baseUrl": ".",
+    "paths": {
+      "@root/*": ["./*"],
+      "@base/*": ["./src/*"],
+      "@configs/*": ["./src/configs/*"],
+      "@middlewares/*": ["./src/middlewares/*"],
+      "@routes/*": ["./src/routes/*"],
+      "@models/*": ["./src/models/*"],
+      "@controllers/*": ["./src/controllers/*"],
+      "@typings/*": ["./src/typings/*"],
+      "@utils/*": ["./src/utils/*"]
+    }
+  },
+  "extends": "@tsconfig/node-lts-strictest-esm/tsconfig.json",
+  "exclude": ["node_modules", "dist"],
+  "include": ["./src/**/*.tsx", "./src/**/*.ts", "./src/**/*.d.ts"]
+}
