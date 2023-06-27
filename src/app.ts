@@ -4,8 +4,7 @@ import helmet from 'helmet';
 import compression from 'compression';
 import { appConfig } from '@configs/app.config';
 import { apiRouterV1 } from '@routers/v1/api.router';
-import { errorHandler } from '@middlewares/errorHandler.middleware';
-import type { AppError } from '@typings/appError.type';
+import { errorHandler, AppError } from '@middlewares/errorHandler.middleware';
 
 const app: Express = express();
 

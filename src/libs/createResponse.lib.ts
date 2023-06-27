@@ -1,11 +1,17 @@
 import type { Response } from 'express';
-import type { ApiResponse } from '@typings/apiResponse.type';
-
 export interface CreateResponseInstance {
   status(code: number): CreateResponseInstance;
   json(data: object | object[]): CreateResponseInstance;
   meta(meta: object | object[]): CreateResponseInstance;
   send(): Response;
+}
+
+export interface ApiResponse {
+  status: 'success' | 'error';
+  code: number;
+  data?: object | object[];
+  error?: object | object[];
+  meta?: object | object[];
 }
 
 export class CreateResponse {
@@ -31,18 +37,18 @@ export class CreateResponse {
     return this;
   }
 
-  meta(meta: object | object[]) {
-    this.response.meta = meta;
-
-    return this;
-  }
-
   json(data: object | object[]) {
     if (this.response.status === 'success') {
       this.response.data = data;
     } else {
       this.response.error = data;
     }
+
+    return this;
+  }
+
+  meta(meta: object | object[]) {
+    this.response.meta = meta;
 
     return this;
   }

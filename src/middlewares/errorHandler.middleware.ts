@@ -1,6 +1,9 @@
 import type { Request, Response, NextFunction, ErrorRequestHandler } from 'express';
-import type { AppError } from '@typings/appError.type';
 import { CreateResponse, CreateResponseInstance } from '@libs/createResponse.lib';
+
+export interface AppError extends Error {
+  status?: number;
+}
 
 export const errorHandler: ErrorRequestHandler = async (
   err: AppError,
