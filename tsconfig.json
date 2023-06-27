@@ -27,6 +27,7 @@
       "@middlewares/*": ["./src/middlewares/*"],
       "@models/*": ["./src/models/*"],
       "@routers/*": ["src/routers/*"],
+      "@services/*": ["./src/services/*"],
       "@typings/*": ["./src/typings/*"],
       "@utils/*": ["./src/utils/*"]
     }
