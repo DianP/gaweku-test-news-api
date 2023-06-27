@@ -1,8 +1,8 @@
-import config from '@configs/config';
+import { appConfig } from '@configs/app.config';
 import { createLogger, format, transports } from 'winston';
 
 const logger = createLogger({
-  level: config.node_env === 'production' ? 'info' : 'debug',
+  level: appConfig.node_env === 'production' ? 'info' : 'debug',
   format: format.json(),
   defaultMeta: { service: 'user-service' },
   transports: [
@@ -20,7 +20,7 @@ const logger = createLogger({
 // If we're not in production then log to the `console` with the format:
 // `${info.level}: ${info.message} JSON.stringify({ ...rest }) `
 //
-if (config.node_env !== 'production') {
+if (appConfig.node_env !== 'production') {
   logger.add(
     new transports.Console({
       format: format.simple(),

@@ -2,19 +2,17 @@ import express, { Express, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
-import config from '@configs/config';
-import routeV1 from '@routes/api/v1.route';
-import errorHandler from '@middlewares/errorHandler.middleware';
-
-// type imports
+import { appConfig } from '@configs/app.config';
+import { apiRouterV1 } from '@routers/v1/api.router';
+import { errorHandler } from '@middlewares/errorHandler.middleware';
 import type { AppError } from '@typings/appError.type';
 
 const app: Express = express();
 
-// set cors
+// set cors & security
 app.use(
   cors({
-    origin: config.cors.origin,
+    origin: appConfig.cors.origin,
     credentials: true,
     optionsSuccessStatus: 200,
   })
@@ -32,7 +30,7 @@ app.use((_req: Request, res: Response, next: NextFunction) => {
 });
 
 // Register routes for API v1
-app.use('/api/v1', routeV1);
+app.use('/api/v1', apiRouterV1);
 
 // Catch 404 and forward to error handler
 app.use((_req: Request, _res: Response, next: NextFunction) => {

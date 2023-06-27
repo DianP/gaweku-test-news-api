@@ -1,9 +1,9 @@
 import app from '@base/app';
-import config from '@configs/config';
+import { appConfig } from '@configs/app.config';
 import logger from '@middlewares/logger.middleware';
 
-const server = app.listen((config.port), () => {
-  logger.log('info', `Server is running on Port: ${config.port}`);
+const server = app.listen(appConfig.port, () => {
+  logger.log('info', `Server is running on Port: ${appConfig.port}`);
 });
 
 const exitHandler = () => {
