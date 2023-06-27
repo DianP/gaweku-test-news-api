@@ -22,10 +22,11 @@
       "@root/*": ["./*"],
       "@base/*": ["./src/*"],
       "@configs/*": ["./src/configs/*"],
-      "@middlewares/*": ["./src/middlewares/*"],
-      "@routes/*": ["./src/routes/*"],
-      "@models/*": ["./src/models/*"],
       "@controllers/*": ["./src/controllers/*"],
+      "@libs/*": ["./src/libs/*"],
+      "@middlewares/*": ["./src/middlewares/*"],
+      "@models/*": ["./src/models/*"],
+      "@routers/*": ["src/routers/*"],
       "@typings/*": ["./src/typings/*"],
       "@utils/*": ["./src/utils/*"]
     }

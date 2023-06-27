@@ -8,16 +8,16 @@
   },
   "private": true,
   "scripts": {
+    "prepare": "husky install",
     "build": "npm run lint && npm run build:clean && npm run build:compile",
     "build:clean": "rimraf ./dist",
     "build:compile": "tsc -p tsconfig.json && tsc-alias -p tsconfig.json --outDir ./dist",
     "start": "cross-env NODE_ENV=production node dist/server.js",
     "dev": "cross-env NODE_ENV=development nodemon --exec \"ts-node -r tsconfig-paths/register\" src/server.ts",
-    "lint": "eslint src/**/*.{ts,css,js,html}",
-    "lint:fix": "eslint --fix --ext src/**/*.ts",
-    "code:format": "prettier --write src/**/*.ts",
-    "code:check": "prettier --check src/**/*.ts",
-    "code:format:specific-file": "prettier --write "
+    "lint": "eslint --ignore-path .gitignore --ext .ts src/",
+    "lint:fix": "eslint --fix --ignore-path .gitignore --ext .ts src/",
+    "code:format": "prettier --write --ignore-path .gitignore 'src/**/*.ts'",
+    "code:check": "prettier --check --ignore-path .gitignore 'src/**/*.ts'"
   },
   "dependencies": {
     "axios": "^1.4.0",
@@ -29,6 +29,8 @@
     "winston": "^3.8.2"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.6.6",
+    "@commitlint/config-conventional": "^17.6.6",
     "@swc/core": "^1.3.66",
     "@swc/helpers": "^0.5.1",
     "@tsconfig/node-lts-strictest-esm": "^18.12.1",
@@ -48,6 +50,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.1.1",
     "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
     "nodemon": "^2.0.22",
     "prettier": "^2.8.4",
     "prettier-eslint": "^15.0.1",
@@ -57,11 +60,5 @@
     "tsc-alias": "^1.8.6",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^4.9.5"
-  },
-  "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": [
-      "npx prettier --write",
-      "npx eslint --fix"
-    ]
   }
 }
