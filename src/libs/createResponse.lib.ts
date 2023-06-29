@@ -11,7 +11,7 @@ export interface ApiResponse {
   code: number;
   data?: object | object[];
   error?: object | object[];
-  meta?: object | object[];
+  meta?: object;
 }
 
 export class CreateResponse {

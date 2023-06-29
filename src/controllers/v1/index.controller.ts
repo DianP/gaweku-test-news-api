@@ -9,8 +9,6 @@ export class IndexController {
       .status(200)
       .json({
         message: 'Welcome to the News API',
-      })
-      .meta({
         version: '1.0.0',
       })
       .send();

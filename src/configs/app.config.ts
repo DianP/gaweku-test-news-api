@@ -12,3 +12,13 @@ export const appConfig = {
     origin: process.env.CORS_ORIGIN,
   },
 };
+
+export const nyTimesConfig = {
+  apiUrl: process.env.NYTIMES_API_URL,
+  apiKey: process.env.NYTIMES_API_KEY,
+};
+
+export const newsAPIConfig = {
+  apiUrl: process.env.NEWSAPI_API_URL,
+  apiKey: process.env.NEWSAPI_API_KEY,
+};

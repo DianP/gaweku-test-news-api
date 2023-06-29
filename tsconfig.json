@@ -7,7 +7,7 @@
     }
   },
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES6",
     "module": "commonjs",
     "ignoreDeprecations": "5.0",
     "sourceMap": true,
@@ -27,6 +27,7 @@
       "@middlewares/*": ["./src/middlewares/*"],
       "@models/*": ["./src/models/*"],
       "@routers/*": ["src/routers/*"],
+      "@schema/*": ["src/schema/*"],
       "@services/*": ["./src/services/*"],
       "@typings/*": ["./src/typings/*"],
       "@utils/*": ["./src/utils/*"]
