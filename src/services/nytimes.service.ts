@@ -81,8 +81,7 @@ export class NYTimesService {
   private createUrl(params: NewsParams): string | string[] {
     const { apiUrl, apiKey } = nyTimesConfig;
     const { search, page, filter } = params;
-    const defaultParams =
-      'fl=headline,abstract,source,byline,web_url,multimedia,pub_date&fq=news_desk:Corrections&sort=newest';
+    const defaultParams = 'fl=headline,abstract,source,byline,web_url,multimedia,pub_date';
 
     if (filter === 'popular') {
       const url = [
