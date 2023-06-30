@@ -63,7 +63,7 @@ export class News {
 
       this.title = data.headline.main;
       this.description = data.abstract;
-      this.snippet = data.abstract;
+      this.snippet = data.lead_paragraph;
       this.source = data.source;
       this.author = this.getAuthor(data);
       this.url = data.web_url;

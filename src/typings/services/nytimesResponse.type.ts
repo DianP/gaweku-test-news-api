@@ -16,6 +16,7 @@ export interface NYTimesResponseItem {
     main: string;
   };
   abstract: string;
+  lead_paragraph: string;
   source: string;
   byline: NYTimesResponseItemByline;
   web_url: string;
