@@ -21,7 +21,7 @@ Currently data output and features is limited.
 
 ### Caching
 
-This project uses Redis for caching. Make sure you have Redis installed and running on your machine. You can change the Redis configuration in `.env`. To turn off caching, set `CACHE_ENABLED` to `false` in `.env`.
+This project uses Redis for caching. Make sure you have Redis Server installed and running on your machine. You can change the Redis configuration in `.env`. To turn off caching, set `CACHE_ENABLED` to `false` in `.env`.
 
 ### .env Config Example
 

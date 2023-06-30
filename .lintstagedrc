@@ -1,3 +1,4 @@
 {
-  "src/**/*.ts": ["npm run lint:fix", "npm run code:format"]
+  "src/**/*.ts": ["npm run lint:fix", "npm run code:format"],
+  "*.md": ["npm run code:format"]
 }
