@@ -1,6 +1,8 @@
 import type { Request, Response } from 'express';
 import { CreateResponse, CreateResponseInstance } from '@libs/createResponse.lib';
 import { z } from 'zod';
+import { useRedis } from '@libs/redisClient.lib';
+
 import type { News, NewsPaginationMeta, NewsParams } from '@models/news.model';
 import { newsParamsSchema } from '@schema/newsParams.schema';
 import { NYTimesService } from '@services/nytimes.service';
@@ -16,6 +18,7 @@ interface ServiceResponse {
 export class NewsController {
   static async getNews(req: Request, res: Response): Promise<Response> {
     const response: CreateResponseInstance = new CreateResponse(res);
+    const requestUrl = req.url;
 
     try {
       const { provider, filter, search, page } = newsParamsSchema.parse({
@@ -34,6 +37,8 @@ export class NewsController {
       if (provider === 'nytimes') {
         const data = await NewsController.getNYTimesService(params);
 
+        useRedis(requestUrl, JSON.stringify(data));
+
         return response.status(200).json(data.data).meta(data.meta.pagination).send();
       }
 
@@ -41,11 +46,15 @@ export class NewsController {
       if (provider === 'newsapi') {
         const data = await NewsController.getNewsAPIService(params);
 
+        useRedis(requestUrl, JSON.stringify(data));
+
         return response.status(200).json(data.data).meta(data.meta).send();
       }
 
       // All Provider
       const data = await NewsController.getAllService(params);
+
+      useRedis(requestUrl, JSON.stringify(data));
 
       return response.status(200).json(data.data).meta(data.meta).send();
     } catch (error) {

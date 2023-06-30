@@ -3,6 +3,14 @@
 This is an example of a simple news API using Express.js and Typescript for Gaweku Test.
 Currently data output and features is limited.
 
+## Requirements
+
+| Name         | Version  |
+| ------------ | -------- |
+| Node         | ^14.21.3 |
+| NPM          | ^6.14.18 |
+| Redis Server | Optional |
+
 ## Installation
 
 1. Clone this repository
@@ -11,26 +19,55 @@ Currently data output and features is limited.
 4. Start dev server by running `npm run dev`
 5. To build the project, run `npm run build` and run the server using `npm start`
 
+### Caching
+
+This project uses Redis for caching. Make sure you have Redis installed and running on your machine. You can change the Redis configuration in `.env`. To turn off caching, set `CACHE_ENABLED` to `false` in `.env`.
+
+### .env Config Example
+
+```
+NODE_ENV=development
+PORT=1337
+CORS_ORIGIN=http://localhost:3000
+
+CACHE_ENABLED=true
+CACHE_EXPIRATION=3600
+REDIS_HOST=localhost
+REDIS_PORT=6379
+REDIS_PASSWORD=
+
+NYTIMES_API_URL=https://api.nytimes.com/svc
+NYTIMES_API_KEY=api-key
+
+NEWSAPI_API_URL=https://newsapi.org/v2
+NEWSAPI_API_KEY=api-key
+```
+
+---
+
 ## API Documentation
 
-| Endpoint    | Description  |
-| ----------- | ------------ | 
-| `GET /news` | Get news data on NewsAPI, and The New York Times' APIs. | 
+| Endpoint    | Description                                             |
+| ----------- | ------------------------------------------------------- |
+| `GET /news` | Get news data on NewsAPI, and The New York Times' APIs. |
 
-## Query Parameters
-| Parameter | Description | Example |
-| --------- | ----------- | ------- |
-| `provider` | Get the news by provider. *options:* `nytimes` `newsapi` `all`. *default:* `all` | `provider=nytimes` |
-| `filter` | Choose to get latest news or popular news. *options:* `popular` `all`. *default:* `all` | `filter=popular` |
-| `search` | Search news by keyword. *options:* `(string)`. Note: Search doesnt work if filter=popular | `search=corona` |
-| `page` | Get the news by page. *options:* `(number)`. *default:* `1` | `page=2` |
+### Query Parameters
+
+| Parameter  | Description                                                                               | Example            |
+| ---------- | ----------------------------------------------------------------------------------------- | ------------------ |
+| `provider` | Get the news by provider. _options:_ `nytimes` `newsapi` `all`. _default:_ `all`          | `provider=nytimes` |
+| `filter`   | Choose to get latest news or popular news. _options:_ `popular` `all`. _default:_ `all`   | `filter=popular`   |
+| `search`   | Search news by keyword. _options:_ `(string)`. Note: Search doesnt work if filter=popular | `search=corona`    |
+| `page`     | Get the news by page. _options:_ `(number)`. _default:_ `1`                               | `page=2`           |
 
 ### Example
+
 ```
 http://localhost:1337/news?provider=nytimes&filter=all&search=corona&page=2
 ```
 
 #### Output
+
 ```
 
 	"status": "success",
