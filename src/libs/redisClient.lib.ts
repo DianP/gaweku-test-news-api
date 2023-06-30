@@ -2,7 +2,7 @@ import { createClient, RedisClientType } from 'redis';
 import { redisConfig } from '@configs/app.config';
 import logger from '@middlewares/logger.middleware';
 
-let redisClient: RedisClientType | undefined;
+let redisClient: RedisClientType;
 
 if (redisConfig.active === 'true') {
   if (!redisConfig.host) {
