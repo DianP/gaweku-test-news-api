@@ -1,7 +1,6 @@
 {
-  "name": "news-api",
+  "name": "gaweku-test-news-api",
   "version": "0.1.0",
-  "description": "News API Express",
   "author": {
     "name": "Dian Pratama",
     "email": "me@diantama.dev"
