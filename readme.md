@@ -1,7 +1,7 @@
 # Gaweku Test - News API
 
-This is an example of a simple news API using Express.js and Typescript for Gaweku Test.
-Currently data output and features is limited.
+This is an example of a simple news API using Express.js and Typescript for the Gaweku Test.
+Currently, data output and features are limited.
 
 ## Requirements
 
